@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置 BookRepository Bean -->
+    <bean id="bookRepository" class="com.library.repository.BookRepository" />
+
+    <!-- 配置 BookService Bean 并注入 BookRepository -->
+    <bean id="bookService" class="com.library.service.BookService">
+        <property name="bookRepository" ref="bookRepository" />
+    </bean>
+
+    <!-- 配置 BookController Bean 并注入 BookService -->
+    <bean id="bookController" class="com.library.controller.BookController">
+        <property name="bookService" ref="bookService" />
+    </bean>
+
+    <bean id="userRepository" class="com.library.repository.UserRepository" />
+
+    <bean id="userService" class="com.library.service.UserService">
+        <property name="userRepository" ref="userRepository" />
+    </bean>
+
+    <bean id="userController" class="com.library.controller.UserController">
+        <property name="userService" ref="userService" />
+    </bean>
+
+</beans>
