@@ -1,5 +1,8 @@
 package com.library.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Book {
     private Long id;
     private String title;
